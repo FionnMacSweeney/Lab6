@@ -8,6 +8,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import {Read} from './components/read.js';
+import {Create} from './components/create.js';
 import {
   BrowserRouter as Router,
   Routes,
@@ -37,8 +39,8 @@ class App extends React.Component {
       {/* switch between urls */}
       <Routes>
         <Route path='/' element={<Content></Content>}></Route>
-        <Route path='/read' element={<Header></Header>}></Route>
-        <Route path='/create' element={<Footer></Footer>}></Route>
+        <Route path= '/read' element={<Read></Read>}></Route>
+        <Route path= '/create' element={<Create></Create>}></Route>
       </Routes>
 
       {/* <Header></Header>
