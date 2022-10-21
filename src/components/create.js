@@ -1,12 +1,84 @@
 import React from "react";
 
 
-export class Create extends React.Component{
+export class Create extends React.Component {
+    constructor() {
+        super();
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.onChangeBookTitle = this.onChangeBookTitle.bind(this);
+        this.onChangeBookCover = this.onChangeBookCover.bind(this);
+        this.onChangeBookAuthor = this.onChangeBookAuthor.bind(this);
 
-    render(){
-        return(
+        this.state = {
+            title: '',
+            cover: '',
+            author: ''
+        }
+    }
+
+    //methods to add title, author ,cover
+    handleSubmit(e) {
+        e.preventDefault();
+        console.log(`${this.state.title}, ${this.state.cover}, ${this.state.author}`)
+
+        this.setState({
+            title: '', cover: '', author: ''
+        })
+    }
+    onChangeBookTitle(e) {
+        this.setState({
+            title: e.target.value
+
+        })
+    }
+
+    onChangeBookCover(e) {
+        this.setState({
+            cover: e.target.value
+        })
+    }
+
+    onChangeBookAuthor(e) {
+        this.setState({
+            author: e.target.value
+        })
+    }
+
+    render() {
+        return (
             <div>
-                    <h3>Hello from create component.</h3>
+                <h3>Hello from create component.</h3>
+                <form onSubmit={this.handleSubmit}>
+
+                    <div className="form-group">
+                        <label>Add Book Title: </label>
+                        <input type="text"
+                            className="form-control"
+                            value={this.state.title}
+                            onChange={this.onChangeBookTitle}
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label>Add Book cover: </label>
+                        <input type="text"
+                            className="form-control"
+                            value={this.state.cover}
+                            onChange={this.onChangeBookCover}
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label>Add Book Author: </label>
+                        <input type="text"
+                            className="form-control"
+                            value={this.state.author}
+                            onChange={this.onChangeBookAuthor}
+                        />
+                    </div>
+
+                    <input type="submit" value="Add Book" />
+                </form>
             </div>
         );
     }
